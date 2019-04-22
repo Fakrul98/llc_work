@@ -1,0 +1,17 @@
+{
+    "name": "fakrul/project",
+    "authors": [
+        {
+            "name": "Fakrul Hasan",
+            "email": "fakrulhasan98@gmail.com"
+        }
+    ],
+    "require": {
+        "phroute/phroute": "^2.1"
+    },
+    "autoload":{
+    	"psr-4":{
+    		"App\\":"app/"
+    	}
+    }
+}
