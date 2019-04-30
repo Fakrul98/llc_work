@@ -1,11 +1,21 @@
 <?php
 
+use Phroute\Phroute\Dispatcher;
+use Phroute\Phroute\RouteCollector;
+use Phroute\Phroute\RouteParser;
 
-$name = "fakrul";
-$address ="Talotia, Gazipur";
+require_once "vendor/autoload.php";
+session_start();
 
-echo $name.$address;
+$router = new RouteCollector(new RouteParser());
+$router->get('/',function(){
+	echo 'Hello!';
+});
+$router->get('/about',function(){
+	echo "about";
+});
 
-echo "<html><head><title><body>";
-echo $name;
-echo"</titl></head></body></</html>";
+$dispatcher = new Dispatcher($router->getData());
+$responce = $dispatcher->dispatch($_SERVER['REQUEST_METHOD'],parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH));
+
+echo $responce;
